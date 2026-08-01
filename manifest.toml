@@ -1,0 +1,27 @@
+schema_version = 1
+
+[plugin]
+id = "release-radar"
+name = "Release Radar"
+version = "0.1.0"
+author = "InstaZDLL"
+world = "waveflow:ui/v1"
+description = "A radar of recent releases from the artists in your library, sourced from MusicBrainz with Cover Art Archive covers."
+homepage = "https://github.com/InstaZDLL/waveflow-plugin-release-radar"
+license = "MIT"
+
+[permissions]
+# The plugin queries only the MusicBrainz web-service (release-group
+# search). Cover Art Archive covers + the "View on MusicBrainz" links
+# are loaded/opened by the app itself (an <img> in the webview / the OS
+# browser), NOT through the plugin's HTTP import — so they don't need to
+# be allowlisted here.
+http = ["https://musicbrainz.org/**"]
+storage_read = false
+# Caches the resolved release list + the scan cursor so re-opening the
+# view is instant and a scan resumes where it left off.
+storage_state = true
+# Redacted artist read (names + aggregate track counts + opaque ids
+# only — no file paths, no per-track rows). Drives which artists the
+# radar follows; local-only, so it works offline.
+library_read_artists = true
