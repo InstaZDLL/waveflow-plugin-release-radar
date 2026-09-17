@@ -6,9 +6,26 @@ name = "Release Radar"
 version = "0.1.0"
 author = "InstaZDLL"
 world = "waveflow:ui/v1"
-description = "A radar of recent releases from the artists in your library, sourced from MusicBrainz with Cover Art Archive covers."
+description = "Finds recent releases from the artists in your library, with release information from MusicBrainz and artwork from the Cover Art Archive."
 homepage = "https://github.com/InstaZDLL/waveflow-plugin-release-radar"
 license = "MIT"
+
+# Propagated to the other locales, like every user-facing string in the
+# app. Japanese, Korean and both Chinese are pending a native-speaker
+# pass and fall back to English until then.
+[plugin.description_i18n]
+fr = "Trouve les sorties récentes des artistes de votre bibliothèque, avec les informations de MusicBrainz et les pochettes de Cover Art Archive."
+es = "Encuentra lanzamientos recientes de los artistas de tu biblioteca, con la información de MusicBrainz y las portadas de Cover Art Archive."
+de = "Findet neue Veröffentlichungen der Künstler in deiner Bibliothek, mit Angaben von MusicBrainz und Covern aus dem Cover Art Archive."
+it = "Trova le uscite recenti degli artisti della tua libreria, con le informazioni di MusicBrainz e le copertine di Cover Art Archive."
+nl = "Vindt recente releases van de artiesten in je bibliotheek, met releasegegevens van MusicBrainz en hoezen van het Cover Art Archive."
+pt = "Encontra lançamentos recentes dos artistas da tua biblioteca, com informação do MusicBrainz e capas do Cover Art Archive."
+"pt-BR" = "Encontra lançamentos recentes dos artistas da sua biblioteca, com informações do MusicBrainz e capas do Cover Art Archive."
+ru = "Находит новые релизы артистов из вашей библиотеки: сведения — из MusicBrainz, обложки — из Cover Art Archive."
+tr = "Kitaplığınızdaki sanatçıların yeni çıkışlarını bulur; bilgiler MusicBrainz'den, kapaklar Cover Art Archive'dan gelir."
+id = "Mencari rilis terbaru dari artis di pustakamu, dengan informasi rilis dari MusicBrainz dan sampul dari Cover Art Archive."
+ar = "يجد الإصدارات الحديثة لفنانين مكتبتك، مع معلومات الإصدار من MusicBrainz والأغلفة من Cover Art Archive."
+hi = "आपकी लाइब्रेरी के कलाकारों की नई रिलीज़ खोजता है — रिलीज़ की जानकारी MusicBrainz से और आर्टवर्क Cover Art Archive से।"
 
 [permissions]
 # The plugin queries only the MusicBrainz web-service (release-group
