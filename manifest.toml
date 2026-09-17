@@ -11,8 +11,8 @@ homepage = "https://github.com/InstaZDLL/waveflow-plugin-release-radar"
 license = "MIT"
 
 # Propagated to the other locales, like every user-facing string in the
-# app. Japanese and Korean are pending a native-speaker pass and fall
-# back to English until then.
+# app. Japanese is pending a native-speaker pass and falls back to
+# English until then.
 [plugin.description_i18n]
 fr = "Trouve les sorties récentes des artistes de votre bibliothèque, avec les informations de MusicBrainz et les pochettes de Cover Art Archive."
 es = "Encuentra lanzamientos recientes de los artistas de tu biblioteca, con la información de MusicBrainz y las portadas de Cover Art Archive."
@@ -24,6 +24,7 @@ pt = "Encontra lançamentos recentes dos artistas da tua biblioteca, com informa
 ru = "Находит новые релизы артистов из вашей библиотеки: сведения — из MusicBrainz, обложки — из Cover Art Archive."
 tr = "Kitaplığınızdaki sanatçıların yeni çıkışlarını bulur; bilgiler MusicBrainz'den, kapaklar Cover Art Archive'dan gelir."
 id = "Mencari rilis terbaru dari artis di pustakamu, dengan informasi rilis dari MusicBrainz dan sampul dari Cover Art Archive."
+ko = "라이브러리에 있는 아티스트의 최근 발매 작품을 찾으며, MusicBrainz의 발매 정보와 Cover Art Archive의 아트워크를 함께 제공합니다."
 "zh-CN" = "查找音乐库中艺术家的近期发行作品，发行信息来自 MusicBrainz，封面来自 Cover Art Archive。"
 "zh-TW" = "尋找您音樂庫中藝人的近期發布作品，並提供來自 MusicBrainz 的發行資訊與 Cover Art Archive 的封面圖片。"
 ar = "يجد الإصدارات الحديثة لفنانين مكتبتك، مع معلومات الإصدار من MusicBrainz والأغلفة من Cover Art Archive."
