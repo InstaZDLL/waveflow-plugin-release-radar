@@ -3,7 +3,7 @@ schema_version = 1
 [plugin]
 id = "release-radar"
 name = "Release Radar"
-version = "0.1.0"
+version = "0.1.1"
 author = "InstaZDLL"
 world = "waveflow:ui/v1"
 description = "Finds recent releases from the artists in your library, with release information from MusicBrainz and artwork from the Cover Art Archive."

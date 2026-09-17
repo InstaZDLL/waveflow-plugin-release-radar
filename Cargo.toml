@@ -6,7 +6,7 @@
 
 [package]
 name = "waveflow-plugin-release-radar"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
 description = "WaveFlow plugin — Release Radar: recent releases from your library's artists via MusicBrainz"
