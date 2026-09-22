@@ -38,8 +38,11 @@ const CACHE_KEY: &str = "release-radar/cache/v1";
 
 /// MusicBrainz requires a descriptive User-Agent identifying the app +
 /// a contact; an anonymous `reqwest/x` UA is answered with `403`.
-const USER_AGENT: &str =
-    "WaveFlow-ReleaseRadar/0.1.0 ( https://github.com/InstaZDLL/waveflow-plugin-release-radar )";
+const USER_AGENT: &str = concat!(
+    "WaveFlow-ReleaseRadar/",
+    env!("CARGO_PKG_VERSION"),
+    " ( https://github.com/InstaZDLL/waveflow-plugin-release-radar )"
+);
 
 /// How many of the library's top artists (by track count — the host
 /// orders the snapshot) the radar follows. Bounded so a huge library
@@ -463,12 +466,12 @@ fn render_view(cache: &Cache, status: &str) -> String {
 
     let mut actions = Vec::new();
     if never_scanned {
-        actions.push(Action::event("Rechercher les nouveautés", "scan"));
+        actions.push(Action::event("Find new releases", "scan"));
     } else if remaining > 0 {
-        actions.push(Action::event(format!("Continuer ({remaining} restants)"), "scan"));
-        actions.push(Action::event("Tout rescanner", "rescan"));
+        actions.push(Action::event(format!("Continue ({remaining} left)"), "scan"));
+        actions.push(Action::event("Rescan all", "rescan"));
     } else {
-        actions.push(Action::event("Rescanner", "rescan"));
+        actions.push(Action::event("Rescan", "rescan"));
     }
 
     let items: Vec<Item> = cache
@@ -490,29 +493,30 @@ fn render_view(cache: &Cache, status: &str) -> String {
         .collect();
 
     let subtitle = if cache.total > 0 {
+        let found = cache.releases.len();
+        let noun = if found == 1 { "release" } else { "releases" };
         Some(format!(
-            "{} nouveauté(s) · {scanned}/{} artistes",
-            cache.releases.len(),
+            "{found} new {noun} · {scanned}/{} artists",
             cache.total
         ))
     } else {
-        Some("Découvrez les dernières sorties de vos artistes".to_string())
+        Some("The latest releases from the artists in your library".to_string())
     };
 
     let (empty_title, empty_hint) = if !items.is_empty() {
         (None, None)
     } else if never_scanned {
         (
-            Some("Bienvenue dans Release Radar".to_string()),
+            Some("Welcome to Release Radar".to_string()),
             Some(
-                "Lancez une recherche pour découvrir les sorties récentes de vos artistes suivis."
+                "Run a search to find recent releases from the artists in your library."
                     .to_string(),
             ),
         )
     } else {
         (
-            Some("Aucune nouveauté".to_string()),
-            Some("Aucune sortie récente trouvée pour vos artistes sur MusicBrainz.".to_string()),
+            Some("No new releases".to_string()),
+            Some("MusicBrainz has no recent releases for your artists.".to_string()),
         )
     };
 
@@ -520,7 +524,7 @@ fn render_view(cache: &Cache, status: &str) -> String {
         Vec::new()
     } else {
         vec![Section {
-            title: Some("Sorties récentes".to_string()),
+            title: Some("Recent releases".to_string()),
             items,
         }]
     };
@@ -540,7 +544,7 @@ fn render_view(cache: &Cache, status: &str) -> String {
         // A serialize failure is essentially impossible for this fixed
         // shape, but the return type demands a valid descriptor either
         // way — hand back a minimal well-formed one rather than trap.
-        "{\"schemaVersion\":1,\"title\":\"Release Radar\",\"status\":\"error\",\"emptyTitle\":\"Erreur\"}"
+        "{\"schemaVersion\":1,\"title\":\"Release Radar\",\"status\":\"error\",\"emptyTitle\":\"Error\"}"
             .to_string()
     })
 }
